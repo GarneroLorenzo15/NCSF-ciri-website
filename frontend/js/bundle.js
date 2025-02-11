@@ -1,3 +1,6 @@
+const cors = require("cors");
+
+
 /* chiamata per salvare il messagio nella text area */
 document.addEventListener("DOMContentLoaded", () => {
   const submitButton = document.querySelector(".submit-button");
@@ -12,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("https://ncsf-sitoweb-production.up.railway.app/", {
+      const response = await fetch(cors({origin:"https://ncsf-sitoweb-production.up.railway.app/"}), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ textarea: textValue }),
